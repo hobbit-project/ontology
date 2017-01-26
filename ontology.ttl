@@ -1,0 +1,313 @@
+ 
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix hobbit: <http://w3id.org/hobbit/experiments#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# --- Classes ---
+
+hobbit:Benchmark 
+		rdf:type owl:Class;
+		rdfs:comment "Instances of this class define a particular benchmark."^^xsd:string ;
+		rdfs:label "Benchmark"^^xsd:string .
+				
+hobbit:Challenge 
+		rdf:type owl:Class;
+		rdfs:comment "Instances of this class define a challenge with its single   hobbit:ChallengeTasks."^^xsd:string ;
+		rdfs:label "Challenge"^^xsd:string .
+				
+hobbit:ChallengeTask
+		rdf:type owl:Class;
+		rdfs:comment "A challenge task is a part of a challenge that involves a benchmark with a   certain parameterization and a list of systems."^^xsd:string ;
+		rdfs:label "Challenge Task"^^xsd:string .		
+		
+hobbit:SystemInstance
+		rdf:type owl:Class;
+		rdfs:comment "Instances of a system that can be mapped to a docker image."^^xsd:string ;
+		rdfs:label "System Instance"^^xsd:string .			
+				
+hobbit:System
+		rdf:type owl:Class;
+		rdfs:comment "Express the connection between single system instances that represent different configurations of the same system. "^^xsd:string ;
+		rdfs:label "System"^^xsd:string .	
+				
+hobbit:API
+		rdf:type owl:Class;
+		rdfs:comment "Connects the benchmark with the API the benchmarked system will have to implement to be benchmarked."^^xsd:string ;
+		rdfs:label "API"^^xsd:string .	
+				
+hobbit:Hardware
+		rdf:type owl:Class;
+		rdfs:comment "Hardware on which the experiment has been carried out on."^^xsd:string ;
+		rdfs:label "Hardware"^^xsd:string .
+			
+hobbit:Experiment
+		rdf:type owl:Class;
+		rdfs:comment "Description of an experiment"^^xsd:string ;
+		rdfs:label "Experiment"^^xsd:string ;
+		rdfs:domain hobbit:KPI .                        			
+				
+hobbit:Error
+		rdf:type owl:Class;
+		rdfs:comment "Why an experiment didn’t terminated in a healthy state"^^xsd:string ;
+                rdfs:label "Error"^^xsd:string .
+
+
+# --- Properties ---
+
+hobbit:Parameter 										
+		rdfs:subClassOf rdf:Property;
+		rdfs:comment "Instances of this class define a parameter property with a label, a description and a value type (using a range definition). "^^xsd:string ;
+		rdfs:label "Parameter"^^xsd:string ;
+		rdfs:range xsd:string ;            
+		rdfs:domain [ owl:unionOf (hobbit:SystemInstance hobbit:Experiment) ] . 
+
+hobbit:ConfigurableParameter 
+		rdfs:subClassOf hobbit:Parameter ;
+		rdfs:comment " An instance of hobbit:Experiment class involving a benchmark that has defined these parameters should use the instances to define the values of the parameters."^^xsd:string ;
+		rdfs:label "Configurable Parameter"^^xsd:string .
+
+hobbit:FeatureParameter 
+	        rdfs:subClassOf hobbit:Parameter ;
+		rdfs:subClassOf qb:DimensionProperty ;
+		rdfs:comment "Instances of this class define a parameter that can be used as features of a system or a benchmark during later analysis. Instances of this class can be created at runtime."^^xsd:string ;
+		rdfs:label "Feature Parameter"^^xsd:string .
+
+hobbit:KPI 									
+		rdfs:subClassOf rdf:Property ;
+		rdfs:subClassOf qb:MeasureProperty ;
+		rdfs:comment "Instances of this class define a measure property."^^xsd:string ;
+		rdfs:label "KPI"^^xsd:string ;
+		rdfs:domain hobbit:Experiment ;
+		rdfs:range xsd:string .
+				
+# --- Datatype Properties ---
+
+hobbit:imageName 												rdf:type owl:DatatypeProperty ;	
+		rdfs:comment "The docker image name of a hobbit:Benchmark or a hobbit:SystemInstance."^^xsd:string ;
+		rdfs:label "Docker Image Name"^^xsd:string ;
+		rdfs:domain [ owl:unionOf (hobbit:SystemInstance  hobbit:Benchmark) ] .
+		rdfs:range xsd:string .
+				
+hobbit:version
+		rdf:type owl:DatatypeProperty ;
+		rdfs:comment "The version of the benchmark."^^xsd:string ;
+		rdfs:label "Benchmark Version"^^xsd:string ;
+		rdfs:domain hobbit:Benchmark ;
+		rdfs:range xsd:string .
+				
+hobbit:executionDate
+		rdf:type owl:DatatypeProperty ;	
+		rdfs:comment "The date at which the execution of the experiments of a challenge starts."^^xsd:string ;
+		rdfs:label "Execution Date"^^xsd:string ;
+		rdfs:domain hobbit:Challenge ;
+		rdfs:range xsd:date .
+				
+hobbit:publicationDate
+		rdf:type owl:DatatypeProperty ;	
+		rdfs:comment "The data at which the challenge results will be copied into the public graph, i.e., be publicly available."^^xsd:string ;
+		rdfs:label "Publication Date"^^xsd:string ;
+		rdfs:domain hobbit:Challenge ;
+		rdfs:range xsd:date .
+				
+hobbit:organizer
+		rdf:type owl:DatatypeProperty ;	
+		rdfs:comment "The user identifier of the challenge organizer."^^xsd:string ;
+		rdfs:label "Organizer"^^xsd:string ;
+		rdfs:domain hobbit:Challenge ;
+		rdfs:range xsd:string .
+				
+hobbit:startTime
+		rdf:type owl:DatatypeProperty ;	
+		rdfs:comment "The timestamp of the start of the hobbit:Experiment."^^xsd:string ;
+		rdfs:label "Start Time"^^xsd:string ;
+		rdfs:domain hobbit:Experiment ; 
+		rdfs:range xsd:dateTime .  
+ 
+hobbit:endTime
+		rdf:type owl:DatatypeProperty ;	
+		rdfs:comment "The timestamp of the end of a hobbit:Experiment."^^xsd:string ;
+		rdfs:label "End Time"^^xsd:string ;
+		rdfs:domain hobbit:Experiment ; 
+		rdfs:range xsd:dateTime .   
+
+hobbit:hobbitPlatformVersion
+		rdf:type owl:DatatypeProperty ;	
+		rdfs:comment "The version of the HOBBIT platform that has been used to carry out the experiment."^^xsd:string ;
+		rdfs:label "Platform Version"^^xsd:string ;
+		rdfs:domain hobbit:Experiment ; 
+		rdfs:range xsd:string .   
+
+hobbit:defaultValue
+		rdf:type owl:DatatypeProperty ;	
+		rdfs:comment "A default value of a hobbit:Parameter."^^xsd:string ;
+		rdfs:label "Deafult Value"^^xsd:string ;
+		rdfs:domain hobbit:ConfigurableParameter ;
+		rdfs:range xsd:string .
+
+hobbit:relevantForAnalysis 
+                        rdf:type owl:DatatypeProperty ;	
+		rdfs:comment "A flag indicating whether a hobbit:Parameter should be used by the analysis component (default) or it should be ignored."^^xsd:string ;
+		rdfs:label "Relevant for Analysis"^^xsd:string ;
+		rdfs:domain hobbit:Parameter ;
+		rdfs:range xsd:boolean .
+
+hobbit:hasModel 
+                rdf:type owl:DatatypeProperty ;
+		rdfs:comment ""^^xsd:string ;
+		rdfs:label ""^^xsd:string ;
+		rdfs:domain hobbit:Hardware ;
+		rdfs:range xsd:string .
+
+hobbit:hasProcessors 
+                rdf:type owl:DatatypeProperty ;
+		rdfs:comment ""^^xsd:string ;
+		rdfs:label ""^^xsd:string ;
+		rdfs:domain hobbit:Hardware ;
+		rdfs:range xsd:string .
+
+hobbit:hasMemory 
+                rdf:type owl:DatatypeProperty ;
+		rdfs:comment ""^^xsd:string ;
+		rdfs:label ""^^xsd:string ;
+		rdfs:domain hobbit:Hardware ;
+		rdfs:range xsd:string .
+
+								
+hobbit:hasDisks 
+                rdf:type owl:DatatypeProperty ;
+		rdfs:comment ""^^xsd:string ;
+		rdfs:label ""^^xsd:string ;
+		rdfs:domain hobbit:Hardware ;
+		rdfs:range xsd:string .
+
+hobbit:hasNetworkAdapters 
+                rdf:type owl:DatatypeProperty ;
+		rdfs:comment ""^^xsd:string ;
+		rdfs:label ""^^xsd:string ;
+		rdfs:domain hobbit:Hardware ;
+		rdfs:range xsd:string .
+
+hobbit:hasOS 
+                rdf:type owl:DatatypeProperty ;
+		rdfs:comment ""^^xsd:string ;
+		rdfs:label ""^^xsd:string ;
+		rdfs:domain hobbit:Hardware ;
+		rdfs:range xsd:string .
+
+hobbit:hasFileSystem 
+                rdf:type owl:DatatypeProperty ;
+		rdfs:comment ""^^xsd:string ;
+		rdfs:label ""^^xsd:string ;
+		rdfs:domain hobbit:Hardware ;
+		rdfs:range xsd:string .
+
+hobbit:hasCPUTypeCount 
+                rdf:type owl:DatatypeProperty ;
+		rdfs:comment ""^^xsd:string ;
+		rdfs:label ""^^xsd:string ;
+		rdfs:domain hobbit:Hardware ;
+		rdfs:range xsd:string .
+
+hobbit:hasRAM 
+                rdf:type owl:DatatypeProperty ;
+		rdfs:comment ""^^xsd:string ;
+		rdfs:label ""^^xsd:string ;
+		rdfs:domain hobbit:Hardware ;
+		rdfs:range xsd:string .
+
+hobbit:closed 
+                rdf:type owl:DatatypeProperty ;	
+		rdfs:comment "A flag indicating whether a hobbit:Challenge is closed/finalized and no more changes are allowed "^^xsd:string ;
+		rdfs:label "Challenge Flag"^^xsd:string ;
+		rdfs:domain hobbit:Challenge ;
+		rdfs:range xsd:boolean .
+				
+# --- Object Properties ---
+
+hobbit:measuresKPI			
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "The hobbit:benchmark measures the KPI and will return it as result "^^xsd:string ;
+		rdfs:label "KPI result"^^xsd:string ;
+		rdfs:domain hobbit:Benchmark ;
+		rdfs:range hobbit:KPI .
+
+hobbit:hasAPI 		
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "Connects the benchmark with the API the benchmarked system will have to implement to be benchmarked."^^xsd:string ;
+		rdfs:label "Has API"^^xsd:string ;
+		rdfs:domain hobbit:Benchmark ;
+		rdfs:range hobbit:API .
+				
+hobbit:hasParameter 		
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "Connects the benchmark to the parameters with which the benchmark can be configured."^^xsd:string ;
+		rdfs:label "Has Parameter"^^xsd:string ;
+		rdfs:domain hobbit:Benchmark ;
+		rdfs:range hobbit:Parameter .
+				
+hobbit:involvesBenchmark 		               
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "Connects the hobbit:experiment or hobbit:ChallengeTask to the hobbit:Benchmark instance that has been used for the experiment.."^^xsd:string ;
+		rdfs:label "Involved Benchmark"^^xsd:string ;
+                rdfs:domain [owl:unionOf (hobbit:Experiment hobbit:ChallengeTask)] ;
+		rdfs:range hobbit:Benchmark .
+
+hobbit:involvesSystemInstance 		 
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "Connects the hobbit:experiment or hobbit:ChallengeTask to the hobbit:SystemInstance that has been benchmarked in this experiment."^^xsd:string ;
+		rdfs:label "Involved System Instance"^^xsd:string ;
+                rdfs:domain [owl:unionOf (hobbit:Experiment hobbit:ChallengeTask)] ;
+		rdfs:range hobbit:SystemInstance .					
+				
+hobbit:isTaskOf 		
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "Connects hobbit:ChallengeTask to a hobbit:Challenge."^^xsd:string ;
+		rdfs:label "Part of"^^xsd:string ;
+		rdfs:domain hobbit:ChallengeTask ;
+		rdfs:range hobbit:Challenge .
+	
+hobbit:isPartOf 	
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "Connects the hobbit:experiment to a hobbit:ChallengeTask."^^xsd:string ;
+		rdfs:label "Part of"^^xsd:string ;
+		rdfs:domain hobbit:Experiment ;
+		rdfs:range hobbit:ChallengeTask .	
+						
+hobbit:implementsAPI 		
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "Connects the hobbit:SystemInstance with the API it implements."^^xsd:string ;
+		rdfs:label "Implements API"^^xsd:string ;
+		rdfs:domain hobbit:SystemInstance ;
+		rdfs:range hobbit:API .		
+				
+hobbit:instanceOf 		
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "Connects the hobbit:SystemInstance to the hobbit:System of which it is a configured instance."^^xsd:string ;
+		rdfs:label "Instance Of"^^xsd:string ;
+	        rdfs:domain hobbit:SystemInstance ;
+		rdfs:range hobbit:System .	
+		
+hobbit:hasParameter 		
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "Connects the hobbit:Benchmark to the hobbit:Parameter with which the benchmark can be configured."^^xsd:string ;
+		rdfs:label "Has Parameter"^^xsd:string ;
+		rdfs:domain hobbit:System ;
+		rdfs:range hobbit:Parameter .					
+				
+hobbit:wasCarriedOutOn 
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "Connects the hobbit:Experiment to the description of hardware that has been used to carry out the experiment."^^xsd:string ;
+		rdfs:label "Hardware specifications"^^xsd:string ;
+		rdfs:domain hobbit:Experiment ;
+		rdfs:range hobbit:Hardware .	
+
+hobbit:terminatedWithError			
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "Connects the hobbit:Experiment to the error, if an error occurred"^^xsd:string ;
+		rdfs:label "Error of the experiment"^^xsd:string ;
+		rdfs:domain hobbit:Experiment ;
+		rdfs:range hobbit:Error .	
+
