@@ -1,0 +1,46 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix hobbit: <http://w3id.org/hobbit/experiments#> .
+@prefix errors: <http://w3id.org/hobbit/error#> .
+
+# --- Errors ---
+
+hobbit:BenchmarkCrashed 
+		rdf:type hobbit:Error;
+		rdfs:comment "Benchmark crashed"^^xsd:string ;
+		rdfs:label "The benchmark terminated with an error."^^xsd:string .
+
+hobbit:BenchmarkImageMissing 
+		rdf:type hobbit:Error;
+		rdfs:comment "Benchmark image missing"^^xsd:string ;
+		rdfs:label "The benchmark image couldn't be loaded."^^xsd:string .
+
+hobbit:BenchmarkCreationError 
+		rdf:type hobbit:Error;
+		rdfs:comment "Benchmark creation error"^^xsd:string ;
+		rdfs:label "The benchmark couldn't be created."^^xsd:string .
+
+hobbit:ExperimentTookTooMuchTime 
+		rdf:type hobbit:Error;
+		rdfs:comment "Experiment took too much time"^^xsd:string ;
+		rdfs:label "The experiment took too much time."^^xsd:string .
+
+hobbit:SystemCrashed 
+		rdf:type hobbit:Error;
+		rdfs:comment "System crashed"^^xsd:string ;
+		rdfs:label "The benchmarked system terminated with an error."^^xsd:string .
+
+hobbit:SystemImageMissing 
+		rdf:type hobbit:Error;
+		rdfs:comment "System image missing"^^xsd:string ;
+		rdfs:label "The benchmarked system image couldn't be loaded."^^xsd:string .
+
+hobbit:SystemCreationError 
+		rdf:type hobbit:Error;
+		rdfs:comment "System creation error"^^xsd:string ;
+		rdfs:label "The benchmarked system couldn't be created."^^xsd:string .
+
+hobbit:UnexpectedError 
+		rdf:type hobbit:Error;
+		rdfs:comment "Unexpected error"^^xsd:string ;
+		rdfs:label "An unexpected error occured."^^xsd:string .
