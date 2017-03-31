@@ -88,7 +88,7 @@ hobbit:KPI
 hobbit:imageName 												rdf:type owl:DatatypeProperty ;	
 		rdfs:comment "The docker image name of a hobbit:Benchmark or a hobbit:SystemInstance."^^xsd:string ;
 		rdfs:label "Docker Image Name"^^xsd:string ;
-		rdfs:domain [ owl:unionOf (hobbit:SystemInstance  hobbit:Benchmark) ] .
+		rdfs:domain [ owl:unionOf (hobbit:SystemInstance  hobbit:Benchmark) ] ;
 		rdfs:range xsd:string .
 				
 hobbit:version
