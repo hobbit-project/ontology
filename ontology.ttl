@@ -70,7 +70,7 @@ hobbit:ConfigurableParameter
 		rdfs:label "Configurable Parameter"^^xsd:string .
 
 hobbit:FeatureParameter 
-	        rdfs:subClassOf hobbit:Parameter ;
+	    rdfs:subClassOf hobbit:Parameter ;
 		rdfs:subClassOf qb:DimensionProperty ;
 		rdfs:comment "Instances of this class define a parameter that can be used as features of a system or a benchmark during later analysis. Instances of this class can be created at runtime."^^xsd:string ;
 		rdfs:label "Feature Parameter"^^xsd:string .
@@ -85,9 +85,17 @@ hobbit:KPI
 				
 # --- Datatype Properties ---
 
-hobbit:imageName 												rdf:type owl:DatatypeProperty ;	
+hobbit:imageName 												
+        rdfs:subPropertyOf hobbit:usesImage ;	
 		rdfs:comment "The docker image name of a hobbit:Benchmark or a hobbit:SystemInstance."^^xsd:string ;
 		rdfs:label "Docker Image Name"^^xsd:string ;
+		rdfs:domain [ owl:unionOf (hobbit:SystemInstance  hobbit:Benchmark) ] ;
+		rdfs:range xsd:string .
+
+hobbit:usesImage
+		rdf:type owl:DatatypeProperty ;	
+		rdfs:comment "The name of a docker image used by this hobbit:Benchmark or hobbit:SystemInstance."^^xsd:string ;
+		rdfs:label "Makes use of this Docker image"^^xsd:string ;
 		rdfs:domain [ owl:unionOf (hobbit:SystemInstance  hobbit:Benchmark) ] ;
 		rdfs:range xsd:string .
 				
