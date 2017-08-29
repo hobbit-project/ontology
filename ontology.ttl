@@ -40,6 +40,23 @@ hobbit:Ranking
 		rdfs:comment "Instances of this class define an ordering of property values."^^xsd:string ;
 		rdfs:label "Ranking"^^xsd:string .
 
+hobbit:KPISeq
+		rdf:type owl:Class ;
+		owl:equivalentClass [
+			a owl:Class ;
+			owl:intersectionOf (
+				rdf:Seq
+				[
+					a owl:Restriction ;
+					owl:onProperty rdf:li ;
+					owl:allValuesFrom hobbit:KPI
+				]
+			)
+		] ;
+		rdfs:comment "RDF Sequence of KPI resources."^^xsd:string ;
+		rdfs:label "KPI Sequence"^^xsd:string .
+		
+
 hobbit:SystemInstance
 		rdf:type owl:Class;
 		rdfs:comment "Instances of a system that can be mapped to a docker image."^^xsd:string ;
@@ -342,3 +359,10 @@ hobbit:ranking
 		rdfs:label "Ranking of KPI"^^xsd:string ;
 		rdfs:domain hobbit:KPI ;
 		rdfs:range hobbit:Ranking .
+
+hobbit:rankingKPIs
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "List of KPIs used for ordering Systems by rank."^^xsd:string ;
+		rdfs:label "Ranking KPIs"^^xsd:string ;
+		rdfs:domain hobbit:ChallengeTask ;
+		rdfs:range hobbit:KPISeq .
