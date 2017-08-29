@@ -6,6 +6,18 @@
 @prefix hobbit: <http://w3id.org/hobbit/experiments#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+# --- Resources ---
+
+hobbit:AscendingOrder
+		rdf:type hobbit:Ranking ;
+		rdfs:comment "Indicates smallest-to-largest preferred ordering of property values."^^xsd:string ;
+		rdfs:label "Ascending Order"^^xsd:string .
+
+hobbit:DescendingOrder
+		rdf:type hobbit:Ranking ;
+		rdfs:comment "Indicates largest-to-smallest preferred ordering of property values."^^xsd:string ;
+		rdfs:label "Descending Order"^^xsd:string .
+
 # --- Classes ---
 
 hobbit:Benchmark 
@@ -23,6 +35,11 @@ hobbit:ChallengeTask
 		rdfs:comment "A challenge task is a part of a challenge that involves a benchmark with a   certain parameterization and a list of systems."^^xsd:string ;
 		rdfs:label "Challenge Task"^^xsd:string .		
 		
+hobbit:Ranking
+		rdf:type owl:Class ;
+		rdfs:comment "Instances of this class define an ordering of property values."^^xsd:string ;
+		rdfs:label "Ranking"^^xsd:string .
+
 hobbit:SystemInstance
 		rdf:type owl:Class;
 		rdfs:comment "Instances of a system that can be mapped to a docker image."^^xsd:string ;
@@ -319,3 +336,9 @@ hobbit:terminatedWithError
 		rdfs:domain hobbit:Experiment ;
 		rdfs:range hobbit:Error .	
 
+hobbit:ranking
+		rdf:type owl:ObjectProperty ;
+		rdfs:comment "Connects the hobbit:KPI to one of hobbit:Ranking resources which indicates the preferred ordering of KPI values."^^xsd:string ;
+		rdfs:label "Ranking of KPI"^^xsd:string ;
+		rdfs:domain hobbit:KPI ;
+		rdfs:range hobbit:Ranking .
