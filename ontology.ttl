@@ -160,7 +160,28 @@ hobbit:organizer
 		rdfs:label "Organizer"^^xsd:string ;
 		rdfs:domain hobbit:Challenge ;
 		rdfs:range xsd:string .
-				
+
+hobbit:registrationCutoffDate
+		rdf:type owl:DatatypeProperty ;
+		rdfs:comment "Date after which no more changes to the systems participating can be made. No more experiments will run after this date."^^xsd:string ;
+		rdfs:label "Registration Cutoff Date"^^xsd:string ;
+		rdfs:domain hobbit:Challenge ;
+		rdfs:range xsd:dateTime .
+
+hobbit:executionPeriod
+		rdf:type owl:DatatypeProperty ;
+		rdfs:comment "Time between consecutive executions."^^xsd:string ;
+		rdfs:label "Period"^^xsd:string ;
+		rdfs:domain hobbit:Challenge ;
+		rdfs:range xsd:duration .
+
+hobbit:dateOfNextExecution
+		rdf:type owl:DatatypeProperty ;
+		rdfs:comment "Date at which the execution takes place next time."^^xsd:string ;
+		rdfs:label "Date of Next Execution"^^xsd:string ;
+		rdfs:domain hobbit:Challenge ;
+		rdfs:range xsd:dateTime .
+
 hobbit:startTime
 		rdf:type owl:DatatypeProperty ;	
 		rdfs:comment "The timestamp of the start of the hobbit:Experiment."^^xsd:string ;
