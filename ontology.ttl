@@ -163,7 +163,7 @@ hobbit:organizer
 
 hobbit:registrationCutoffDate
 		rdf:type owl:DatatypeProperty ;
-		rdfs:comment "Date after which no more changes to the systems participating can be made. No more experiments will run after this date."^^xsd:string ;
+		rdfs:comment "Date after which no more systems can be registered for a challenge."^^xsd:string ;
 		rdfs:label "Registration Cutoff Date"^^xsd:string ;
 		rdfs:domain hobbit:Challenge ;
 		rdfs:range xsd:dateTime .
