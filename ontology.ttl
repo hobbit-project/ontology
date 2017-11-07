@@ -173,7 +173,7 @@ hobbit:executionPeriod
 		rdfs:comment "Time between consecutive executions."^^xsd:string ;
 		rdfs:label "Period"^^xsd:string ;
 		rdfs:domain hobbit:Challenge ;
-		rdfs:range xsd:duration .
+		rdfs:range xsd:string .
 
 hobbit:dateOfNextExecution
 		rdf:type owl:DatatypeProperty ;
