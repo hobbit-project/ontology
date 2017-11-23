@@ -7,6 +7,8 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix sys: <http://w3id.org/system> .
 @prefix bench: <http://w3id.org/bench> .
+@prefix error: <http://w3id.org/hobbit/error#> .
+@prefix limes: <http://limes.sf.net/ontology/> .
 
 # --- Benchmark ---
 
