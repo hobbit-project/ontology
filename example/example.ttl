@@ -133,4 +133,4 @@ hobbit:OAEIChallenge a hobbit:Challenge ;
   hobbit:ExecutionDate "2017-02-25"^^xsd:date  ;
   hobbit:PublicationDate "2017-02-10"^^xsd:date  ;
   hobbit:organizer "FORTH" ;
-  hobbit :closed "false"^^xsd:boolean .
+  hobbit:closed "false"^^xsd:boolean .
