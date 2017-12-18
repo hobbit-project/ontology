@@ -1,5 +1,7 @@
 # ontology
 
+[![Build Status](https://travis-ci.org/hobbit-project/ontology.svg?branch=master)](https://travis-ci.org/hobbit-project/ontology)
+
 This repository contains the HOBBIT ontology definition in the `ontology.ttl` file.
 The ontology is used to describe the benchmarking of systems including:
 

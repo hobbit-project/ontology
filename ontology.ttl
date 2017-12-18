@@ -108,6 +108,12 @@ hobbit:FeatureParameter
   rdfs:comment "Instances of this class define a parameter that can be used as features of a system or a benchmark during later analysis. Instances of this class can be created at runtime."^^xsd:string ;
   rdfs:label "Feature Parameter"^^xsd:string .
 
+hobbit:ForwardedParameter
+  rdfs:subClassOf hobbit:Parameter ;
+  rdfs:subClassOf qb:DimensionProperty ;
+  rdfs:comment "Instances of this class define a parameter that can be part of a benchmark configuration and will be forwarded to the system by the platform."^^xsd:string ;
+  rdfs:label "Forwarded Parameter"^^xsd:string .
+
 hobbit:KPI
   rdfs:subClassOf rdf:Property ;
   rdfs:subClassOf qb:MeasureProperty ;
