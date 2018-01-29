@@ -187,6 +187,13 @@ hobbit:dateOfNextExecution
   rdfs:domain hobbit:Challenge ;
   rdfs:range xsd:dateTime .
 
+hobbit:visible
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "A flag indicating whether a hobbit:Challenge is visible to the public."^^xsd:string ;
+  rdfs:label "Visibility"^^xsd:string ;
+  rdfs:domain hobbit:Challenge ;
+  rdfs:range xsd:boolean .
+
 hobbit:startTime
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "The timestamp of the start of the hobbit:Experiment."^^xsd:string ;
