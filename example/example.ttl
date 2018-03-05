@@ -26,17 +26,20 @@ bench:lance a	hobbit:Benchmark;
 bench:precision a hobbit:KPI;
   rdfs:label "Precision"@en;
   rdfs:comment	"Precision = TP / (TP + FP)"@en;
-  rdfs:range	xsd:float .
+  rdfs:range	xsd:float ;
+  hobbit:ranking hobbit:DescendingOrder .
 
 bench:recall a hobbit:KPI;
   rdfs:label "Recall"@en;
   rdfs:comment	"Recall = TP / (TP + FN)"@en;
-  rdfs:range	xsd:float .
+  rdfs:range	xsd:float ;
+  hobbit:ranking hobbit:DescendingOrder .
 
 bench:fmeasure a hobbit:KPI;
   rdfs:label "F-measure"@en;
   rdfs:comment	"F-measure is the harmonic mean of precision and recall."@en;
-  rdfs:range	xsd:float .
+  rdfs:range	xsd:float ;
+  hobbit:ranking hobbit:DescendingOrder .
 
 bench:lanceApi a hobbit:API .
 
@@ -116,6 +119,12 @@ hobbit:hasModel "...." ;
   hobbit:hasCPUTypeCount "1"^^xsd:int ;
   hobbit:hasRAM "..." .
 
+# --- List of KPIs for leaderboard ---
+
+hobbit:OAEILinkingChallenge_KPIs a rdf:Seq, hobbit:KPISeq ;
+  rdf:_1 bench:recall ;
+  rdf:_2 bench:precision ;
+  rdf:_3 bench:fmeasure .
 
 # --- Challenge Task ---
 
@@ -125,7 +134,8 @@ hobbit:OAEILinkingChallenge a hobbit:ChallengeTask ;
   hobbit:visible "false"^^xsd:boolean;
   hobbit:involvesSystemInstance sys:limesV1;
   hobbit:involvesBenchmark bench:lance;
-  hobbit:isTaskOf hobbit:OAEIChallenge .
+  hobbit:isTaskOf hobbit:OAEIChallenge;
+  hobbit:rankingKPIs hobbit:OAEILinkingChallenge_KPIs.
 
 
 hobbit:OAEIChallenge a hobbit:Challenge ;
