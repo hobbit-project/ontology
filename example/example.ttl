@@ -122,6 +122,7 @@ hobbit:hasModel "...." ;
 hobbit:OAEILinkingChallenge a hobbit:ChallengeTask ;
   rdfs:label	"Linking"@en ;
   rdfs:comment	"Linking Challenge for OAEI 2017"@en ;
+  hobbit:visible "false"^^xsd:boolean;
   hobbit:involvesSystemInstance sys:limesV1;
   hobbit:involvesBenchmark bench:lance;
   hobbit:isTaskOf hobbit:OAEIChallenge .
