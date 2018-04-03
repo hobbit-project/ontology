@@ -2,7 +2,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix qb: <http://purl.org/linked-data/cube#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix hobbit: <http://w3id.org/hobbit/experiments#> .
+@prefix hobbit: <http://w3id.org/hobbit/vocab#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # --- Resources ---
