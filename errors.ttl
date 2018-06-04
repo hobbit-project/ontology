@@ -1,6 +1,6 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix hobbit: <http://w3id.org/hobbit/experiments#> .
+@prefix hobbit: <http://w3id.org/hobbit/vocab#> .
 @prefix errors: <http://w3id.org/hobbit/error#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
