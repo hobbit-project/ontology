@@ -9,6 +9,7 @@
 @prefix bench: <http://w3id.org/bench> .
 @prefix error: <http://w3id.org/hobbit/error#> .
 @prefix limes: <http://limes.sf.net/ontology/> .
+@prefix example: <http://example.org/> .
 
 # --- Benchmark ---
 
@@ -89,7 +90,7 @@ limes:threshold a hobbit:FeatureParameter;
 exp:LinkingExp10 a hobbit:Experiment ;
   hobbit:involvesSystemInstance sys:limesV1;
   hobbit:involvesBenchmark bench:lance;
-  hobbit:wasCarriedOutOn <http://example.org/ExampleHardware> ;
+  hobbit:wasCarriedOutOn example:ExampleHardware ;
   hobbit:startTime "2016-11-30T22:57:00"^^xsd:dateTime ;
   hobbit:endTime "2016-11-30T23:01:00"^^xsd:dateTime ;
   hobbit:hobbitPlatformVersion "V1.3" ;
@@ -108,7 +109,7 @@ error:nullPointerException a hobbit:Error ;
 
 # --- Hardware ---
 
-<http://example.org/ExampleHardware> a hobbit:Hardware ;
+example:ExampleHardware a hobbit:Hardware ;
 hobbit:hasModel "...." ;
   hobbit:hasProcessors "...." ;
   hobbit:hasMemory "...." ;
