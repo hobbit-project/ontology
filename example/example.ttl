@@ -6,7 +6,7 @@
 @prefix exp: <http://w3id.org/hobbit/experiments#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix sys: <http://w3id.org/system> .
-@prefix bench: <http://w3id.org/bench> .
+@prefix bench: <http://w3id.org/bench#> .
 @prefix error: <http://w3id.org/hobbit/error#> .
 @prefix limes: <http://limes.sf.net/ontology/> .
 @prefix example: <http://example.org/> .
@@ -21,7 +21,7 @@ bench:lance a	hobbit:Benchmark;
   hobbit:measuresKPI bench:precision ;
   hobbit:measuresKPI bench:recall ;
   hobbit:measuresKPI bench:fmeasure ;
-  hobbit:hasApi	bench:lanceApi;
+  hobbit:hasAPI	bench:lanceApi;
   hobbit:hasParameter bench:lanceDataFormat .
 
 bench:precision a hobbit:KPI;
@@ -73,7 +73,7 @@ sys:limesV1 a  hobbit:SystemInstance ;
   rdfs:label	"Limes"@en;
   rdfs:comment	"Limes is an Instance Matching System..."@en;
   hobbit:imageName "LimesImageName" ;
-  hobbit:implementsApi bench:lanceApi ;
+  hobbit:implementsAPI bench:lanceApi ;
   hobbit:instanceOf sys:limes ;
   limes:threshold "0.7"^^xsd:float .
 
@@ -142,7 +142,7 @@ hobbit:OAEILinkingChallenge a hobbit:ChallengeTask ;
 hobbit:OAEIChallenge a hobbit:Challenge ;
   rdfs:label	"OAEI Challenge"@en ;
   rdfs:comment	"Challenge for OAEI 2017"@en ;
-  hobbit:ExecutionDate "2017-02-25"^^xsd:date  ;
-  hobbit:PublicationDate "2017-02-10"^^xsd:date  ;
+  hobbit:executionDate "2017-02-25"^^xsd:date  ;
+  hobbit:publicationDate "2017-02-10"^^xsd:date  ;
   hobbit:organizer "FORTH" ;
   hobbit:closed "false"^^xsd:boolean .
