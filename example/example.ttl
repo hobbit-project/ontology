@@ -112,7 +112,7 @@ error:nullPointerException a hobbit:Error ;
 # --- Hardware ---
 
 example:ExampleHardware a hobbit:Hardware ;
-  example:comprises example:ExampleHardwareNode .
+  hobbit:comprises example:ExampleHardwareNode .
 
 example:ExampleHardwareNode a hobbit:HardwareNode ;
   mexcore:cpu "2-core (1 GHz, 1 GHz)" ;
