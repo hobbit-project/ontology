@@ -112,9 +112,9 @@ error:nullPointerException a hobbit:Error ;
 # --- Hardware ---
 
 example:ExampleHardware a hobbit:Hardware ;
-  hobbit:comprises example:ExampleHardwareNode .
+  hobbit:comprises example:ExampleHardwareConfiguration .
 
-example:ExampleHardwareNode a hobbit:HardwareNode ;
+example:ExampleHardwareConfiguration a mexcore:HardwareConfiguration ;
   mexcore:cpu "2-core (1 GHz, 1 GHz)" ;
   mexcore:memory "Memory: 2 GiB, Swap: 1 GiB" ;
   doap:os "Linux1.11.1-11-generic#11-Ubuntu SMP Tue Jan 01 00:00:00 UTC 1970x86_64" .

@@ -4,6 +4,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix hobbit: <http://w3id.org/hobbit/vocab#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mexcore: <http://mex.aksw.org/mex-core#> .
 
 # --- Resources ---
 
@@ -75,11 +76,6 @@ hobbit:Hardware
   rdf:type owl:Class;
   rdfs:comment "Hardware setup on which the experiment has been carried out on."^^xsd:string ;
   rdfs:label "Hardware setup"^^xsd:string .
-
-hobbit:HardwareNode
-  rdf:type owl:Class;
-  rdfs:comment "One of nodes in hardware setup."^^xsd:string ;
-  rdf:label "Hardware node"^^xsd:string .
 
 hobbit:Experiment
   rdf:type owl:Class;
@@ -389,7 +385,7 @@ hobbit:comprises
   rdfs:comment "Connects the hardware setup description to the hardware node description."^^xsd:string ;
   rdfs:label "Hardware node specifications"^^xsd:string ;
   rdfs:domain hobbit:Hardware ;
-  rdfs:range hobbit:HardwareNode .
+  rdfs:range mexcore:HardwareConfiguration .
 
 hobbit:terminatedWithError
   rdf:type owl:ObjectProperty ;
