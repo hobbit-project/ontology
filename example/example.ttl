@@ -89,7 +89,7 @@ limes:threshold a hobbit:FeatureParameter;
 exp:LinkingExp10 a hobbit:Experiment ;
   hobbit:involvesSystemInstance sys:limesV1;
   hobbit:involvesBenchmark bench:lance;
-  hobbit:wasCarriedOut <http://example.org/ExampleHardware> ;
+  hobbit:wasCarriedOutOn <http://example.org/ExampleHardware> ;
   hobbit:startTime "2016-11-30T22:57:00"^^xsd:dateTime ;
   hobbit:endTime "2016-11-30T23:01:00"^^xsd:dateTime ;
   hobbit:hobbitPlatformVersion "V1.3" ;
