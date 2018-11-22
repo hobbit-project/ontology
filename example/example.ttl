@@ -9,6 +9,8 @@
 @prefix bench: <http://w3id.org/bench> .
 @prefix error: <http://w3id.org/hobbit/error#> .
 @prefix limes: <http://limes.sf.net/ontology/> .
+@prefix mexcore: <http://mex.aksw.org/mex-core#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix example: <http://example.org/> .
 
 # --- Benchmark ---
@@ -110,15 +112,12 @@ error:nullPointerException a hobbit:Error ;
 # --- Hardware ---
 
 example:ExampleHardware a hobbit:Hardware ;
-hobbit:hasModel "...." ;
-  hobbit:hasProcessors "...." ;
-  hobbit:hasMemory "...." ;
-  hobbit:hasDisks "..." ;
-  hobbit:hasNetworkAdapters "...." ;
-  hobbit:hasOS "Linux .." ;
-  hobbit:hasFileSystem "..." ;
-  hobbit:hasCPUTypeCount "1"^^xsd:int ;
-  hobbit:hasRAM "..." .
+  example:comprises example:ExampleHardwareNode .
+
+example:ExampleHardwareNode a hobbit:HardwareNode ;
+  mexcore:cpu "2-core (1 GHz, 1 GHz)" ;
+  mexcore:memory "Memory: 2 GiB, Swap: 1 GiB" ;
+  doap:os "Linux1.11.1-11-generic#11-Ubuntu SMP Tue Jan 01 00:00:00 UTC 1970x86_64" .
 
 # --- List of KPIs for leaderboard ---
 
