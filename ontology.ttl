@@ -18,7 +18,27 @@ hobbit:DescendingOrder
   rdfs:comment "Indicates largest-to-smallest preferred ordering of property values."^^xsd:string ;
   rdfs:label "Descending Order"^^xsd:string .
 
+hobbit:PearsonAlgorithm a hobbit:AnalysisAlgorithm ;
+  rdf:type hobbit:AnalysisAlgorithm ;
+  rdfs:label "Pearson"@en ;
+  rdfs:comment "Pearson correlation coefficient."@en .
+
 # --- Classes ---
+
+hobbit:AnalysisAlgorithm
+  rdf:type owl:Class ;
+  rdfs:comment "Instances of this class define algorithms which compute correlation."^^xsd:string ;
+  rdfs:label "Analysis Algorithm"^^xsd:string .
+
+hobbit:AnalysisResult
+  rdf:type owl:Class ;
+  rdfs:comment "Instances of this class define correlation data for a pair of hobbit:Parameter and hobbit:KPI in a hobbit:AnalysisResultset."^^xsd:string ;
+  rdfs:label "Analysis Result"^^xsd:string .
+
+hobbit:AnalysisResultset
+  rdf:type owl:Class ;
+  rdfs:comment "Instances of this class define a resultset of correlation data for a pair of hobbit:Benchmark and hobbit:System."^^xsd:string ;
+  rdfs:label "Analysis Resultset"^^xsd:string .
 
 hobbit:Benchmark
   rdf:type owl:Class;
@@ -303,6 +323,13 @@ hobbit:closed
 
 # --- Object Properties ---
 
+hobbit:algorithm
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Analysis result was computed using this algorithm."^^xsd:string ;
+  rdfs:label "Algorithm used"^^xsd:string ;
+  rdfs:domain hobbit:AnalysisResult ;
+  rdfs:range hobbit:AnalysisAlgorithm .
+
 hobbit:measuresKPI
   rdf:type owl:ObjectProperty ;
   rdfs:comment "The hobbit:benchmark measures the KPI and will return it as result "^^xsd:string ;
@@ -328,14 +355,28 @@ hobbit:involvesBenchmark
   rdf:type owl:ObjectProperty ;
   rdfs:comment "Connects the hobbit:experiment or hobbit:ChallengeTask to the hobbit:Benchmark instance that has been used for the experiment.."^^xsd:string ;
   rdfs:label "Involved Benchmark"^^xsd:string ;
-  rdfs:domain [owl:unionOf (hobbit:Experiment hobbit:ChallengeTask)] ;
+  rdfs:domain [owl:unionOf (hobbit:Experiment hobbit:ChallengeTask hobbit:AnalysisResultset)] ;
   rdfs:range hobbit:Benchmark .
+
+hobbit:involvesKPI
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Connects the hobbit:AnalysisResult to the hobbit:KPI that has been used to compute correlation."^^xsd:string ;
+  rdfs:label "Involved KPI"^^xsd:string ;
+  rdfs:domain hobbit:AnalysisResult ;
+  rdfs:range hobbit:KPI .
+
+hobbit:involvesParameter
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Connects the hobbit:AnalysisResult to the hobbit:Parameter that has been used to compute correlation."^^xsd:string ;
+  rdfs:label "Involved Parameter"^^xsd:string ;
+  rdfs:domain hobbit:AnalysisResult ;
+  rdfs:range hobbit:Parameter .
 
 hobbit:involvesSystemInstance
   rdf:type owl:ObjectProperty ;
   rdfs:comment "Connects the hobbit:experiment or hobbit:ChallengeTask to the hobbit:SystemInstance that has been benchmarked in this experiment."^^xsd:string ;
   rdfs:label "Involved System Instance"^^xsd:string ;
-  rdfs:domain [owl:unionOf (hobbit:Experiment hobbit:ChallengeTask)] ;
+  rdfs:domain [owl:unionOf (hobbit:Experiment hobbit:ChallengeTask hobbit:AnalysisResultset)] ;
   rdfs:range hobbit:SystemInstance .
 
 hobbit:isTaskOf
