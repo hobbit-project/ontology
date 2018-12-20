@@ -360,14 +360,14 @@ hobbit:involvesBenchmark
 
 hobbit:involvesKPI
   rdf:type owl:ObjectProperty ;
-  rdfs:comment "Connects the hobbit:AnalysisResult to the hobbit:KPI that has been used to compute correlation."^^xsd:string ;
+  rdfs:comment "Connects the hobbit:AnalysisResult to a hobbit:KPI that has been used to compute the result."^^xsd:string ;
   rdfs:label "Involved KPI"^^xsd:string ;
   rdfs:domain hobbit:AnalysisResult ;
   rdfs:range hobbit:KPI .
 
 hobbit:involvesParameter
   rdf:type owl:ObjectProperty ;
-  rdfs:comment "Connects the hobbit:AnalysisResult to the hobbit:Parameter that has been used to compute correlation."^^xsd:string ;
+  rdfs:comment "Connects the hobbit:AnalysisResult to a hobbit:Parameter that has been used to compute the result."^^xsd:string ;
   rdfs:label "Involved Parameter"^^xsd:string ;
   rdfs:domain hobbit:AnalysisResult ;
   rdfs:range hobbit:Parameter .
