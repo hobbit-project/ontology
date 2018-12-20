@@ -20,24 +20,24 @@ hobbit:DescendingOrder
 
 hobbit:PearsonAlgorithm a hobbit:AnalysisAlgorithm ;
   rdf:type hobbit:AnalysisAlgorithm ;
-  rdfs:label "Pearson"@en ;
-  rdfs:comment "Pearson correlation coefficient."@en .
+  rdfs:label "Pearson correlation"@en ;
+  rdfs:comment "Pearson correlation coefficient is a measure of the linear correlation between two variables X and Y."@en .
 
 # --- Classes ---
 
 hobbit:AnalysisAlgorithm
   rdf:type owl:Class ;
-  rdfs:comment "Instances of this class define algorithms which compute correlation."^^xsd:string ;
+  rdfs:comment "Instances of this class define algorithms which generate further insights into experiment results by analysing the results across experiments."^^xsd:string ;
   rdfs:label "Analysis Algorithm"^^xsd:string .
 
 hobbit:AnalysisResult
   rdf:type owl:Class ;
-  rdfs:comment "Instances of this class define correlation data for a pair of hobbit:Parameter and hobbit:KPI in a hobbit:AnalysisResultset."^^xsd:string ;
+  rdfs:comment "Instances of this class define a single result of an analysis algorithm and is typically part of a larger hobbit:AnalysisResultset."^^xsd:string ;
   rdfs:label "Analysis Result"^^xsd:string .
 
 hobbit:AnalysisResultset
   rdf:type owl:Class ;
-  rdfs:comment "Instances of this class define a resultset of correlation data for a pair of hobbit:Benchmark and hobbit:System."^^xsd:string ;
+  rdfs:comment "Instances of this class define a result set of an analysis algorithm."^^xsd:string ;
   rdfs:label "Analysis Resultset"^^xsd:string .
 
 hobbit:Benchmark
