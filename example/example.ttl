@@ -1,5 +1,6 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix qb: <http://purl.org/linked-data/cube#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix hobbit: <http://w3id.org/hobbit/vocab#> .
@@ -146,3 +147,17 @@ hobbit:OAEIChallenge a hobbit:Challenge ;
   hobbit:publicationDate "2017-02-10"^^xsd:date  ;
   hobbit:organizer "FORTH" ;
   hobbit:closed "false"^^xsd:boolean .
+
+# Analysis
+
+example:AnalysisResultset1 a hobbit:AnalysisResultset ;
+  hobbit:involvesBenchmark bench:lance ;
+  hobbit:involvesSystemInstance sys:limesV1 ;
+  dcterms:created "2018-11-30T00:00:00Z"^^xsd:dateTime .
+
+example:AnalysisResult1 a hobbit:AnalysisResult ;
+  dcterms:isPartOf example:AnalysisResultset1 ;
+  hobbit:algorithm hobbit:PearsonAlgorithm ;
+  hobbit:involvesParameter limes:threshold ;
+  hobbit:involvesKPI bench:precision ;
+  rdf:value "0.5"^^xsd:double .
