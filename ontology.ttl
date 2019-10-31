@@ -448,3 +448,23 @@ hobbit:rankingKPIs
   rdfs:label "Ranking KPIs"^^xsd:string ;
   rdfs:domain hobbit:ChallengeTask ;
   rdfs:range hobbit:KPISeq .
+
+# --- KPIs ---
+
+hobbit:totalCpuUsage a hobbit:KPI ;
+  rdfs:label "Total CPU usage"@en;
+  rdfs:comment "The sum of the overall CPU usage in ms."@en;
+  rdfs:domain hobbit:Experiment, hobbit:Challenge;
+  rdfs:range xsd:long .
+
+hobbit:totalFileSystemUsage a hobbit:KPI ;
+  rdfs:label "Total file system usage"@en;
+  rdfs:comment ""@en;
+  rdfs:domain hobbit:Experiment, hobbit:Challenge;
+  rdfs:range xsd:long .
+
+hobbit:totalMemoryUsage a hobbit:KPI ;
+  rdfs:label "Total memory usage"@en;
+  rdfs:comment ""@en;
+  rdfs:domain hobbit:Experiment, hobbit:Challenge;
+  rdfs:range xsd:long .
