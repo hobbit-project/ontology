@@ -1,5 +1,0 @@
-install: make install
-language: generic
-script: make test
-services:
-  - docker
